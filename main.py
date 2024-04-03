@@ -82,9 +82,9 @@ def go(config: DictConfig):
                 "main",
                 parameters={
                     "input": "clean_sample.csv:latest",
-                    "test_size": 0.2,
-                    "random_seed": 42,
-                    "stratify_by": "neighbourhood_group"
+                    "test_size": config['modeling']['test_size'],
+                    "random_seed": config['modeling']['random_seed'],
+                    "stratify_by": config['modeling']['stratify_by'],
                 },
             )
 
@@ -102,7 +102,7 @@ def go(config: DictConfig):
                     os.path.join(hydra.utils.get_original_cwd(), "src", "train_random_forest"),
                     "main",
                     parameters={
-                        "trainval_artifact": "train_val_split.csv:latest",
+                        "trainval_artifact": "trainval_data.csv:latest",
                         "val_size": config['modeling']['val_size'],
                         "random_seed": config['modeling']['random_seed'],
                         "stratify_by": config['modeling']['stratify_by'],
