@@ -29,6 +29,10 @@ def go(args):
     cleaned_data = data[(data['price'] >= args.min_price) & (data['price'] <= args.max_price)]
     logger.info(f"Data cleaned. Rows before: {len(data)}, Rows after: {len(cleaned_data)}")
 
+    # Drop rows in that are not in the proper geolocation
+    idx = cleaned_data['longitude'].between(-74.25, -73.50) & cleaned_data['latitude'].between(40.5, 41.2)
+    cleaned_data = cleaned_data[idx].copy()
+
     # Save the cleaned data to CSV
     cleaned_data.to_csv("clean_sample.csv", index=False)
     logger.info("Cleaned data saved to clean_sample.csv")
