@@ -565,6 +565,11 @@ Then commit your change, make a new release (for example ``1.0.1``) and retry (o
 ``-v 1.0.1`` when calling mlflow this time). Now the run should succeed and voit la', 
 you have trained your new model on the new data.
 
+## Have a look at the results
+The results of the project can be viewed in W&B: https://wandb.ai/ml_engineer/nyc_airbnb?nw=nwuserjturz
+
+and on GitHub: https://github.com/JulianeT/build-ml-pipeline-for-short-term-rental-prices
+
 ## License
 
 [License](LICENSE.txt)
